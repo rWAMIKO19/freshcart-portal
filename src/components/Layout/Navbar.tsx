@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ShoppingCart, Search, User } from 'lucide-react';
+import { Menu, X, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
@@ -74,15 +74,6 @@ const Navbar = () => {
             <button className="p-2 rounded-full hover:bg-secondary transition-colors">
               <Search className="h-5 w-5" />
             </button>
-            <button className="p-2 rounded-full hover:bg-secondary transition-colors">
-              <User className="h-5 w-5" />
-            </button>
-            <button className="p-2 rounded-full hover:bg-secondary transition-colors relative">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">
-                0
-              </span>
-            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -123,15 +114,6 @@ const Navbar = () => {
               <div className="flex items-center space-x-6 mt-6">
                 <button className="p-2">
                   <Search className="h-5 w-5" />
-                </button>
-                <button className="p-2">
-                  <User className="h-5 w-5" />
-                </button>
-                <button className="p-2 relative">
-                  <ShoppingCart className="h-5 w-5" />
-                  <span className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">
-                    0
-                  </span>
                 </button>
               </div>
             </div>

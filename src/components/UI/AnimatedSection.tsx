@@ -48,27 +48,28 @@ const AnimatedSection = ({
     };
   }, [threshold, once, hasAnimated]);
 
+  const animationClasses = {
+    'opacity-0': !isVisible,
+    'opacity-100': isVisible,
+    // Fade in animation
+    'translate-y-10': !isVisible && animation === 'fade-in',
+    'translate-y-0': isVisible && animation === 'fade-in',
+    // Slide in bottom animation
+    'translate-y-20': !isVisible && animation === 'slide-in-bottom',
+    // Slide in left animation
+    'translate-x-[-50px]': !isVisible && animation === 'slide-in-left',
+    'translate-x-0': isVisible && (animation === 'slide-in-left' || animation === 'slide-in-right'),
+    // Slide in right animation
+    'translate-x-[50px]': !isVisible && animation === 'slide-in-right',
+    // Scale in animation
+    'scale-95': !isVisible && animation === 'scale-in',
+    'scale-100': isVisible && animation === 'scale-in',
+  };
+
   return (
     <div
       ref={ref}
-      className={cn(
-        'transition-all duration-700',
-        {
-          'opacity-0': !isVisible,
-          'opacity-100': isVisible,
-          'translate-y-10': !isVisible && animation === 'fade-in',
-          'translate-y-0': isVisible && animation === 'fade-in',
-          'translate-y-20': !isVisible && animation === 'slide-in-bottom',
-          'translate-y-0': isVisible && animation === 'slide-in-bottom',
-          'translate-x-[-50px]': !isVisible && animation === 'slide-in-left',
-          'translate-x-0': isVisible && animation === 'slide-in-left',
-          'translate-x-[50px]': !isVisible && animation === 'slide-in-right',
-          'translate-x-0': isVisible && animation === 'slide-in-right',
-          'scale-95': !isVisible && animation === 'scale-in',
-          'scale-100': isVisible && animation === 'scale-in',
-        },
-        className
-      )}
+      className={cn('transition-all duration-700', animationClasses, className)}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
